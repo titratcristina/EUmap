@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.css" integrity="sha256-YR4HrDE479EpYZgeTkQfgVJq08+277UXxMLbi/YP69o="
+        crossorigin="anonymous" />
+    <title>Uniunea Europeană</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+        }
+
+        html,
+        body,
+        #mapid {
+            height: 100%;
+            width: 100%;
+        }
+
+        .info {
+            position: fixed;
+            bottom: 1em;
+            right: 1em;
+            padding: 6px 8px;
+            font: 14px/16px Arial, Helvetica, sans-serif;
+            background: white;
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+
+        .info h4 {
+            margin: 0 0 5px;
+            color: #777;
+        }
+
+        .legend {
+            line-height: 18px;
+            color: #555;
+            position: bottom;
+            left: 1em !important;
+        }
+
+        .legend i {
+            width: 18px;
+            height: 18px;
+            float: left;
+            margin-right: 8px;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mapid"></div>
+
+    <div class="info legend leaflet-control">
+        <i style="background:#8FC93A"></i>Membru EFTA<br>
+        <i style="background:#F7C59F"></i>Candidat UE<br>
+        <i style="background:#2693CC"></i>Membru UE DIN 2004<br>
+        <i style="background:#076DB8"></i>Membru UE DIN 2007<br>
+        <i style="background:#004AA1"></i>Membru UE
+    </div>
+
+    <!-- JavaScript -->
+    <!-- jQuery, Popper.js, Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.js" integrity="sha256-6BZRSENq3kxI4YYBDqJ23xg0r1GwTHEpvp3okdaIqBw="
+        crossorigin="anonymous"></script>
+    <script>
+        var mymap = L.map('mapid').setView([56.1528, 7.8940], 4);
+        var population, groupings;
+        L.tileLayer(
+            'https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png', {
+                maxZoom: 22
+            }).addTo(mymap);
+
+        function highlightFeature(e) {
+            var layer = e.target;
+            info.update(layer.feature.properties);
+            layer.setStyle({
+                weight: 5,
+                color: '#666',
+                dashArray: '',
+                fillOpacity: 0.7
+            });
+        }
+
+        function resetHighlightPopulation(e) {
+            info.update();
+            population.resetStyle(e.target);
+        }
+
+        function resetHighlightGrouping(e) {
+            info.update();
+            groupings.resetStyle(e.target);
+        }
+
+        function zoomToFeature(e) {
+            mymap.fitBounds(e.target.getBounds());
+        }
+
+        function getColorPopulationLayer(d) {
+            if (d > 80) {
+                return '#800026';
+            } else if (d > 50) {
+                return '#BD0026';
+            } else if (d > 20) {
+                return '#E31A1C';
+            } else if (d > 10) {
+                return '#FC4E2A';
+            } else if (d > 5) {
+                return '#FD8D3C';
+            } else if (d > 2) {
+                return '#FEB24C';
+            } else if (d > 1) {
+                return '#FED976';
+            } else if (d == null) {
+                return '#fff';
+            } else {
+                return '#FFEDA0';
+            }
+        }
+
+        function getColorGrouping(d, y) {
+            if (d == 'EU') {
+                if (y >= 2007) {
+                    return '#2693CC';
+                } else if (y >= 2004 && y < 2007) {
+                    return '#076DB8';
+                } else {
+                    return '#004AA1';
+                };
+            } else if (d == 'candidat') {
+                return '#F7C59F';
+            } else if (d == 'EFTA') {
+                return '#8FC93A';
+            }
+        }
+
+        function stylePopulationLayer(feature) {
+            return {
+                fillColor: getColorPopulationLayer(feature.properties.population),
+                weight: 2,
+                opacity: 1,
+                color: 'white',
+                dashArray: '3',
+                fillOpacity: 0.7
+            };
+        }
+
+        function styleGroupings(feature) {
+            return {
+                fillColor: getColorGrouping(feature.properties.regionalGrouping, feature.properties.EUmemberSince),
+                weight: 2,
+                opacity: 1,
+                color: 'white',
+                dashArray: '3',
+                fillOpacity: 0.7
+            };
+        }
+
+        $.getJSON('/static/custom.geojson', function (data) {
+            population = L.geoJson(data, {
+                style: stylePopulationLayer,
+                clickable: true,
+                onEachFeature: function (feature, layer) {
+                    layer.on({
+                        mouseover: highlightFeature,
+                        mouseout: resetHighlightPopulation,
+                        click: zoomToFeature
+                    });
+                }
+            });
+            groupings = L.geoJson(data, {
+                style: styleGroupings,
+                clickable: true,
+                onEachFeature: function (feature, layer) {
+                    layer.on({
+                        mouseover: highlightFeature,
+                        mouseout: resetHighlightGrouping,
+                        click: zoomToFeature
+                    });
+                }
+            }).addTo(mymap);
+
+            var baseMaps = {
+                "Populația": population,
+                "Apartenența": groupings
+            };
+
+            L.control.layers(baseMaps).addTo(mymap);
+        })
+
+        var info = L.control();
+
+        info.onAdd = function (map) {
+            this._div = L.DomUtil.create('div', 'info'); // face un cu clasa "info"
+            this.update();
+            return this._div;
+        };
+
+        info.update = function (props) {
+            this._div.innerHTML = '<h4>Uniunea Europeană</h4>' + (props ?
+                '<b>' + props.nameRo + ' (' + props.name + ')</b><br />' + props.population +
+                ' milioane locuitori' :
+                'Alege o țară');
+        };
+
+        info.addTo(mymap);
+    </script>
+</body>
+
+</html>
