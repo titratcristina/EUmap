@@ -47,6 +47,7 @@
             color: #555;
             position: bottom;
             left: 1em !important;
+            width: 16em;
         }
 
         .legend i {
@@ -81,7 +82,7 @@
         crossorigin="anonymous"></script>
     <script>
         var mymap = L.map('mapid').setView([56.1528, 7.8940], 4);
-        var population, groupings;
+        var population, groupings, schengen;
         L.tileLayer(
             'https://{s}.tile.openstreetmap.de/tiles/osmde/{z}/{x}/{y}.png', {
                 maxZoom: 22
@@ -106,6 +107,11 @@
         function resetHighlightGrouping(e) {
             info.update();
             groupings.resetStyle(e.target);
+        }
+
+        function resetHighlightSchengen(e) {
+            info.update();
+            population.resetStyle(e.target);
         }
 
         function zoomToFeature(e) {
@@ -150,6 +156,14 @@
             }
         }
 
+        function getColorShengen(d) {
+            if (d == 'yes') {
+                return '#2693CC';
+            } else if (d == 'no') {
+                return '#8FC93A';
+            }
+        }
+
         function stylePopulationLayer(feature) {
             return {
                 fillColor: getColorPopulationLayer(feature.properties.population),
@@ -164,6 +178,17 @@
         function styleGroupings(feature) {
             return {
                 fillColor: getColorGrouping(feature.properties.regionalGrouping, feature.properties.EUmemberSince),
+                weight: 2,
+                opacity: 1,
+                color: 'white',
+                dashArray: '3',
+                fillOpacity: 0.7
+            };
+        }
+
+        function styleShengen(feature) {
+            return {
+                fillColor: getColorShengen(feature.properties.Shengen),
                 weight: 2,
                 opacity: 1,
                 color: 'white',
@@ -194,11 +219,23 @@
                         click: zoomToFeature
                     });
                 }
+            });
+            schengen = L.geoJson(data, {
+                style: styleShengen,
+                clickable: true,
+                onEachFeature: function (feature, layer) {
+                    layer.on({
+                        mouseover: highlightFeature,
+                        mouseout: resetHighlightSchengen,
+                        click: zoomToFeature
+                    });
+                }
             }).addTo(mymap);
 
             var baseMaps = {
                 "Populația": population,
-                "Apartenența": groupings
+                "Apartenența": groupings,
+                "Spațiul Schengen": schengen
             };
 
             L.control.layers(baseMaps).addTo(mymap);
