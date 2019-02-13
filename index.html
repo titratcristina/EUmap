@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
         crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.css" integrity="sha256-YR4HrDE479EpYZgeTkQfgVJq08+277UXxMLbi/YP69o="
         crossorigin="anonymous" />
@@ -57,29 +57,110 @@
             margin-right: 8px;
             opacity: 0.7;
         }
+
+        .hide {
+            display: none;
+        }
+
+        .btn-group-xs > .btn, .btn-xs {
+          padding  : .35rem .4rem;
+          font-size  : .875rem;
+          line-height  : .5;
+          border-radius : .2rem;
+        }
     </style>
 </head>
 
 <body>
     <div id="mapid"></div>
 
-    <div class="info legend leaflet-control">
-        <i style="background:#8FC93A"></i>Membru EFTA<br>
-        <i style="background:#F7C59F"></i>Candidat UE<br>
-        <i style="background:#2693CC"></i>Membru UE DIN 2004<br>
-        <i style="background:#076DB8"></i>Membru UE DIN 2007<br>
-        <i style="background:#004AA1"></i>Membru UE
+    <div class="info legend leaflet-control" id="legendGr">
+        <i style="background:#004AA1"></i>Membru UE <br style="clear:both;">
+        <i style="background:#076DB8"></i>Membru UE DIN 2007<br style="clear:both;">
+        <i style="background:#2693CC"></i>Membru UE DIN 2004<br style="clear:both;">
+        <i style="background:#F7C59F"></i>Candidat UE<br style="clear:both;">
+        <i style="background:#F76C5E"></i>Brexit<br style="clear:both;">
+        <i style="background:#8FC93A"></i>Membru EFTA
     </div>
 
+    <div class="info legend leaflet-control hide" id="legendSch" style="width:23em">
+        <i style="background:#144679"></i>Spațiu Schengen<br style="clear:both;">
+        <i style="background:#6DC7BE"></i>Spațiu Schengen nonUE<br style="clear:both;">
+        <i style="background:#F8B932"></i>Țări candidate Schengen<br style="clear:both;">
+        <i style="background:#AB3428"></i>Țări UE care nu sunt în spațiul Schengen
+    </div>
+
+    <div class="info legend leaflet-control hide" id="legendPop">
+        <i style="background:#800026"></i>>80 milioane<br style="clear:both;">
+        <i style="background:#BD0026"></i>>50 milioane<br style="clear:both;">
+        <i style="background:#E31A1C"></i>>20 milioane<br style="clear:both;">
+        <i style="background:#FC4E2A"></i>>10 milioane<br style="clear:both;">
+        <i style="background:#FD8D3C"></i>>5 milioane<br style="clear:both;">
+        <i style="background:#FEB24C"></i>>2 milioane<br style="clear:both;">
+        <i style="background:#FED976"></i>>1 milion<br style="clear:both;">
+        <i style="background:#FFEDA0"></i>1 milion
+    </div>
+
+    <div class="info legend leaflet-control hide" id="legendArea">
+        <i style="background: #1a3512"></i>>600 mii km²<br style="clear:both;">
+        <i style="background: #28531c"></i>>400 mii km²<br style="clear:both;">
+        <i style="background: #448d31"></i>>200 mii km²<br style="clear:both;">
+        <i style="background: #52aa3b"></i>>80 mii km²<br style="clear:both;">
+        <i style="background: #64c14b"></i>>40 mii km²<br style="clear:both;">
+        <i style="background: #7dcb68"></i>>10 mii km²<br style="clear:both;">
+        <i style="background: #bce4b1"></i>>5 mii km²<br style="clear:both;">
+        <i style="background: #e2f3dd"></i>>1 mie km²
+    </div>
+
+
+
+    <div class="modal fade" id="populationModal" tabindex="-1" role="dialog" aria-labelledby="populationModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="popoulationModalLabel">Grafic Populație</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <canvas id="myChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="modal fade" id="areaModal" tabindex="-1" role="dialog" aria-labelledby="areaModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="areaModalLabel">Grafic Suprafață</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    ...
+                </div>
+            </div>
+        </div>
+    </div>
+
+
     <!-- JavaScript -->
-    <!-- jQuery, Popper.js, Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    <!-- jQuery, Popper.js, Bootstrap JS, Chart.js -->
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
         crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.js" integrity="sha256-6BZRSENq3kxI4YYBDqJ23xg0r1GwTHEpvp3okdaIqBw="
         crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+
     <script>
         var mymap = L.map('mapid').setView([56.1528, 7.8940], 4);
         var population, groupings, schengen;
@@ -104,6 +185,11 @@
             population.resetStyle(e.target);
         }
 
+        function resetHighlightArea(e) {
+            info.update();
+            area.resetStyle(e.target);
+        }
+
         function resetHighlightGrouping(e) {
             info.update();
             groupings.resetStyle(e.target);
@@ -111,7 +197,7 @@
 
         function resetHighlightSchengen(e) {
             info.update();
-            population.resetStyle(e.target);
+            schengen.resetStyle(e.target);
         }
 
         function zoomToFeature(e) {
@@ -137,7 +223,29 @@
                 return '#fff';
             } else {
                 return '#FFEDA0';
-            }
+            };
+        }
+
+        function getColorArea(d) {
+            if (d > 600) {
+                return '#1a3512';
+            } else if (d > 400) {
+                return '#28531c';
+            } else if (d > 200) {
+                return '#448d31';
+            } else if (d > 80) {
+                return '#52aa3b';
+            } else if (d > 40) {
+                return '#64c14b';
+            } else if (d > 10) {
+                return '#7dcb68';
+            } else if (d > 5) {
+                return '#bce4b1';
+            } else if (d == null) {
+                return '#fff';
+            } else {
+                return '#e2f3dd';
+            };
         }
 
         function getColorGrouping(d, y) {
@@ -149,24 +257,41 @@
                 } else {
                     return '#004AA1';
                 };
+            } else if (d == 'EU Brexit') {
+                return '#F76C5E';
             } else if (d == 'candidat') {
                 return '#F7C59F';
             } else if (d == 'EFTA') {
                 return '#8FC93A';
-            }
+            };
         }
 
-        function getColorShengen(d) {
+        function getColorSchengen(d) {
             if (d == 'yes') {
-                return '#2693CC';
+                return '#144679';
+            } else if (d == 'yesNonEU') {
+                return '#6DC7BE';
             } else if (d == 'no') {
-                return '#8FC93A';
-            }
+                return '#AB3428';
+            } else if (d == 'progress') {
+                return '#F8B932';
+            };
         }
 
         function stylePopulationLayer(feature) {
             return {
                 fillColor: getColorPopulationLayer(feature.properties.population),
+                weight: 2,
+                opacity: 1,
+                color: 'white',
+                dashArray: '3',
+                fillOpacity: 0.7
+            };
+        }
+
+        function styleArea(feature) {
+            return {
+                fillColor: getColorArea(feature.properties.area),
                 weight: 2,
                 opacity: 1,
                 color: 'white',
@@ -186,9 +311,9 @@
             };
         }
 
-        function styleShengen(feature) {
+        function styleSchengen(feature) {
             return {
-                fillColor: getColorShengen(feature.properties.Shengen),
+                fillColor: getColorSchengen(feature.properties.Schengen),
                 weight: 2,
                 opacity: 1,
                 color: 'white',
@@ -197,7 +322,70 @@
             };
         }
 
+
         $.getJSON('/static/custom.geojson', function (data) {
+            var dataNameRo = [],
+                dataPopulation = [];
+            for (i = 0; i < data.features.length; i++) {
+                if (data.features[i].properties.population) {
+                    dataNameRo.push(data.features[i].properties.name);
+                };
+            };
+            for (i = 0; i < data.features.length; i++) {
+                if (data.features[i].properties.population) {
+                    dataPopulation.push(data.features[i].properties.population);
+                };
+            }
+            var ctx = document.getElementById("myChart");
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: dataNameRo,
+                    datasets: [{
+                        label: 'Population',
+                        data: dataPopulation,
+                        backgroundColor: [
+                            'rgba(128,0,38,0.7)',
+                            'rgba(254,178,76,0.7)',
+                            'rgba(128,0,38,0.7)',
+                            'rgba(227,26,28,0.7)',
+                            'rgba(254,217,118,0.7)',
+                            'rgba(254,217,118,0.7)',
+                            'rgba(189,0,38,0.7)',
+                            'rgba(254,217,118,0.7)',
+                            'rgba(227,26,28,0.7)',
+                            'rgba(128,0,38,0.7)',
+                            'rgba(128,0,38,0.7)',
+                            'rgba(254,178,76,0.7)',
+                            'rgba(254,217,118,0.7)',
+                            'rgba(227,26,28,0.7)',
+                            'rgba(189,0,38,0.7)',
+                            'rgba(253,141,60,0.7)',
+                            'rgba(253,141,60,0.7)',
+                            'rgba(255,237,160,0.7)',
+                            'rgba(255,237,160,0.7)',
+                            'rgba(255,237,160,0.7)',
+                            'rgba(253,141,60,0.7)',
+                            'rgba(254,178,76,0.7)',
+                            'rgba(253,141,60,0.7)',
+                            'rgba(189,0,38,0.7)',
+                            'rgba(254,178,76,0.7)',
+                            'rgba(227,26,28,0.7)',
+                            'rgba(255,237,160,0.7)',
+                            'rgba(189,0,38,0.7)'
+                        ]
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
             population = L.geoJson(data, {
                 style: stylePopulationLayer,
                 clickable: true,
@@ -205,6 +393,17 @@
                     layer.on({
                         mouseover: highlightFeature,
                         mouseout: resetHighlightPopulation,
+                        click: zoomToFeature
+                    });
+                }
+            });
+            area = L.geoJson(data, {
+                style: styleArea,
+                clickable: true,
+                onEachFeature: function (feature, layer) {
+                    layer.on({
+                        mouseover: highlightFeature,
+                        mouseout: resetHighlightArea,
                         click: zoomToFeature
                     });
                 }
@@ -219,9 +418,9 @@
                         click: zoomToFeature
                     });
                 }
-            });
+            }).addTo(mymap);
             schengen = L.geoJson(data, {
-                style: styleShengen,
+                style: styleSchengen,
                 clickable: true,
                 onEachFeature: function (feature, layer) {
                     layer.on({
@@ -230,16 +429,47 @@
                         click: zoomToFeature
                     });
                 }
-            }).addTo(mymap);
+            });
 
             var baseMaps = {
-                "Populația": population,
                 "Apartenența": groupings,
+                "Populația": population,
+                "Suprafața țărilor": area,
                 "Spațiul Schengen": schengen
             };
 
             L.control.layers(baseMaps).addTo(mymap);
         })
+
+        var currentModal = 'none';
+
+        function openmodal() {
+            $(currentModal).modal('show');
+        }
+
+        mymap.on('baselayerchange', function (e) {
+            if (e.name == "Populația") {
+                currentModal = "#populationModal";
+                $('#mybutton').removeAttr('disabled');
+                $(".legend").hide();
+                $("#legendPop").show();
+            } else if (e.name == "Suprafața țărilor") {
+                currentModal = "#areaModal";
+                $('#mybutton').removeAttr('disabled');
+                $(".legend").hide();
+                $("#legendArea").show();
+            } else if (e.name == "Spațiul Schengen") {
+                currentModal = "none";
+                $('#mybutton').attr('disabled', 'disabled');
+                $(".legend").hide();
+                $("#legendSch").show();
+            } else if (e.name == "Apartenența") {
+                currentModal = "none";
+                $('#mybutton').attr('disabled', 'disabled');
+                $(".legend").hide();
+                $("#legendGr").show();
+            }
+        });
 
         var info = L.control();
 
@@ -250,10 +480,12 @@
         };
 
         info.update = function (props) {
-            this._div.innerHTML = '<h4>Uniunea Europeană</h4>' + (props ?
+            this._div.innerHTML = '<h4>Populația țărilor din UE</h4>' + (props ?
                 '<b>' + props.nameRo + ' (' + props.name + ')</b><br />' + props.population +
-                ' milioane locuitori' :
-                'Alege o țară');
+                ' milioane locuitori' + '<br>' + 'Grupul regional ' + props.regionalGrouping +
+                '<br>' + 'Anul aderării:  ' + props.EUmemberSince + '<br>' + 'Suprafața:  ' + props.area :
+                'Alege o țară sau <button class="btn btn-xs btn-primary" id="mybutton" onclick="openmodal();"' +
+                (currentModal == 'none' ? " disabled='disabled' " : "") + '>vezi graficul</button>');
         };
 
         info.addTo(mymap);
