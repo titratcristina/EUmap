@@ -97,6 +97,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"area": 30.528,
 				"capital": "Bruxelles",
 				"languages": "neerlandeză, franceză și germană",
 				"EUmemberSince": "1958",
@@ -345,6 +346,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"area": 83.879,
 				"capital": "Viena",
 				"languages": "germană",
 				"EUmemberSince": "1995",
@@ -353,7 +355,7 @@
 				"regionalGrouping": "EU",
 				"GDPtotal": 386.4278,
 				"GDPpercap": 44176.52,
-				"nameRO": "Austria",
+				"nameRo": "Austria",
 				"population": 8.7474,
 				"scalerank": 1,
 				"featurecla": "Admin-0 country",
@@ -702,6 +704,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"area": 357.386,
 				"capital": "Berlin",
 				"languages": "germană",
 				"EUmemberSince": "1958",
@@ -1371,6 +1374,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"area": 110.994,
 				"capital": "Sofia",
 				"languages": "bulgară",
 				"EUmemberSince": "2007",
@@ -1635,6 +1639,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"area": 78.865,
 				"capital": "Praga",
 				"languages": "cehă",
 				"EUmemberSince": "2004",
@@ -1960,8 +1965,10 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"area": 41.285,
+				"Schengen": "yesNonEU",
 				"regionalGrouping": "EFTA",
-				"numeRo": "Elveția",
+				"nameRo": "Elveția",
 				"scalerank": 1,
 				"featurecla": "Admin-0 country",
 				"labelrank": 4,
@@ -2224,6 +2231,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"area": 505.990,
 				"capital": "Madrid",
 				"languages": "spaniolă",
 				"EUmemberSince": "1986",
@@ -2893,6 +2901,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"area": 1.580,
 				"regionalGrouping": "EU",
 				"nameRo": "Insulele Åland",
 				"population": "29.489",
@@ -3033,6 +3042,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"area": 43.094,
 				"capital": "Copenhaga",
 				"languages": "daneză",
 				"EUmemberSince": "1973",
@@ -3462,6 +3472,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"area": 45.227,
 				"capital": "Tallinn",
 				"languages": "estonă",
 				"EUmemberSince": "2004",
@@ -3756,6 +3767,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"area": 338.424,
 				"capital": "Helsinki",
 				"languages": "finlandeză, suedeză",
 				"EUmemberSince": "1995",
@@ -4546,6 +4558,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"area": 643.801,
 				"capital": "Paris",
 				"languages": "franceză",
 				"EUmemberSince": "1958",
@@ -5568,6 +5581,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"area": 56.594,
 				"capital": "Zagreb",
 				"languages": "croată",
 				"EUmemberSince": "2013",
@@ -6077,12 +6091,13 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"area": 242.495,
 				"capital": "Londra",
 				"languages": "engleză",
 				"EUmemberSince": "1973",
 				"currency": "lira sterlină",
 				"Schengen": "no",
-				"regionalGrouping": "EU",
+				"regionalGrouping": "EU Brexit",
 				"GDPtotal": 2618.8857,
 				"GDPpercap": 39899.39,
 				"nameRo": "Regatul Unit al Marii Britanii",
@@ -7238,6 +7253,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"area": 93.030,
 				"capital": "Budapesta",
 				"languages": "maghiară",
 				"EUmemberSince": "2004",
@@ -7537,6 +7553,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"area": 131.957,
 				"capital": "Atena",
 				"languages": "greacă",
 				"EUmemberSince": "1981",
@@ -8793,6 +8810,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"area": 70.273,
 				"capital": "Dublin",
 				"languages": "irlandeză, engleză",
 				"EUmemberSince": "1973",
@@ -9200,7 +9218,7 @@
 			"type": "Feature",
 			"properties": {
 				"regionalGrouping": "EFTA",
-				"numeRo": "Islanda",
+				"nameRo": "Islanda",
 				"scalerank": 1,
 				"featurecla": "Admin-0 country",
 				"labelrank": 3,
@@ -9729,92 +9747,8 @@
 		}, {
 			"type": "Feature",
 			"properties": {
-				"scalerank": 4,
-				"featurecla": "Admin-0 country",
-				"labelrank": 6,
-				"sovereignt": "United Kingdom",
-				"sov_a3": "GB1",
-				"adm0_dif": 1,
-				"level": 2,
-				"type": "Country",
-				"admin": "Jersey",
-				"adm0_a3": "JEY",
-				"geou_dif": 0,
-				"geounit": "Jersey",
-				"gu_a3": "JEY",
-				"su_dif": 0,
-				"subunit": "Jersey",
-				"su_a3": "JEY",
-				"brk_diff": 0,
-				"name": "Jersey",
-				"name_long": "Jersey",
-				"brk_a3": "JEY",
-				"brk_name": "Jersey",
-				"brk_group": "Channel Islands",
-				"abbrev": "Jey.",
-				"postal": "JE",
-				"formal_en": "Bailiwick of Jersey",
-				"formal_fr": null,
-				"note_adm0": "U.K. crown dependency",
-				"note_brk": null,
-				"name_sort": "Jersey",
-				"name_alt": null,
-				"mapcolor7": 6,
-				"mapcolor8": 6,
-				"mapcolor9": 6,
-				"mapcolor13": 3,
-				"pop_est": 91626,
-				"gdp_md_est": 5100,
-				"pop_year": -99,
-				"lastcensus": 2001,
-				"gdp_year": -99,
-				"economy": "2. Developed region: nonG7",
-				"income_grp": "2. High income: nonOECD",
-				"wikipedia": -99,
-				"fips_10": null,
-				"iso_a2": "JE",
-				"iso_a3": "JEY",
-				"iso_n3": "832",
-				"un_a3": "832",
-				"wb_a2": "JG",
-				"wb_a3": "CHI",
-				"woe_id": -99,
-				"adm0_a3_is": "JEY",
-				"adm0_a3_us": "JEY",
-				"adm0_a3_un": -99,
-				"adm0_a3_wb": -99,
-				"continent": "Europe",
-				"region_un": "Europe",
-				"subregion": "Northern Europe",
-				"region_wb": "Europe & Central Asia",
-				"name_len": 6,
-				"long_len": 6,
-				"abbrev_len": 4,
-				"tiny": -99,
-				"homepart": -99,
-				"filename": "JEY.geojson"
-			},
-			"geometry": {
-				"type": "Polygon",
-				"coordinates": [
-					[
-						[-2.018652343749977, 49.23125],
-						[-2.009912109374994, 49.180810546874994],
-						[-2.053759765624989, 49.169824218749994],
-						[-2.091015624999983, 49.187402343749994],
-						[-2.165673828124994, 49.187402343749994],
-						[-2.23583984375, 49.1763671875],
-						[-2.220507812499989, 49.266357421875],
-						[-2.082226562499983, 49.25537109375],
-						[-2.018652343749977, 49.23125]
-					]
-				]
-			}
-		}, {
-			"type": "Feature",
-			"properties": {
 				"regionalGrouping": "EFTA",
-				"numeRo": "Liechtenstein",
+				"nameRo": "Liechtenstein",
 				"scalerank": 1,
 				"featurecla": "Admin-0 country",
 				"labelrank": 6,
@@ -9905,6 +9839,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"area": 301.338,
 				"capital": "Roma",
 				"languages": "italiană",
 				"EUmemberSince": "1958",
@@ -10630,6 +10565,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"area": 2.586,
 				"capital": "Luxemburg",
 				"languages": "franceză, germană",
 				"EUmemberSince": "1958",
@@ -10761,6 +10697,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"area": 65.300,
 				"capital": "Vilnius",
 				"languages": "lituaniană",
 				"EUmemberSince": "2004",
@@ -11007,6 +10944,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"area": 64.589,
 				"capital": "Riga",
 				"languages": "letonă",
 				"EUmemberSince": "2004",
@@ -11314,6 +11252,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"area": 316,
 				"capital": "Valletta",
 				"languages": "malteză, engleză",
 				"EUmemberSince": "1958",
@@ -11421,6 +11360,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"nameRo": "Macedonia",
 				"regionalGrouping": "candidat",
 				"scalerank": 1,
 				"featurecla": "Admin-0 country",
@@ -11578,6 +11518,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"area": 42.508,
 				"capital": "Amsterdam",
 				"languages": "neerlandeză",
 				"EUmemberSince": "1958",
@@ -11970,8 +11911,9 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"Schengen": "yesNonEU",
 				"regionalGrouping": "EFTA",
-				"numeRo": "Norvegia",
+				"nameRo": "Norvegia",
 				"scalerank": 1,
 				"featurecla": "Admin-0 country",
 				"labelrank": 3,
@@ -14158,6 +14100,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"area": 92.212,
 				"capital": "Lisabona",
 				"languages": "portugheză",
 				"EUmemberSince": "1986",
@@ -14542,6 +14485,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"area": 238.397,
 				"capital": "București",
 				"languages": "București",
 				"EUmemberSince": "2007",
@@ -14901,6 +14845,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"area": 312.679, 
 				"capital": "Varșovia",
 				"languages": "polonă",
 				"EUmemberSince": "2004",
@@ -15384,6 +15329,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"area": 49.035,
 				"capital": "Bratislava",
 				"languages": "slovacă",
 				"EUmemberSince": "2004",
@@ -15614,6 +15560,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"area": 20.273,
 				"capital": "Ljubljana",
 				"languages": "slovenă",
 				"EUmemberSince": "2004",
@@ -15912,6 +15859,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"area": 450.295,
 				"capital": "Stockholm",
 				"languages": "suedeză",
 				"EUmemberSince": "1995",
@@ -16612,6 +16560,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"area": 9.251,
 				"capital": "Nicosia",
 				"languages": "greacă",
 				"EUmemberSince": "2004",
@@ -16835,6 +16784,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"nameRo": "Turcia",
 				"regionalGrouping": "candidat",
 				"scalerank": 1,
 				"featurecla": "Admin-0 country",
@@ -16984,6 +16934,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"nameRo": "Albania",
 				"regionalGrouping": "candidat",
 				"scalerank": 1,
 				"featurecla": "Admin-0 country",
@@ -17082,6 +17033,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"nameRo": "Serbia",
 				"regionalGrouping": "candidat",
 				"scalerank": 1,
 				"featurecla": "Admin-0 country",
@@ -17204,6 +17156,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"nameRo": "Muntenegru",
                 "regionalGrouping": "candidat",
 				"scalerank": 1,
 				"featurecla": "Admin-0 country",
