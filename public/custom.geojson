@@ -2901,10 +2901,8 @@
 		}, {
 			"type": "Feature",
 			"properties": {
-				"area": 1.580,
 				"regionalGrouping": "EU",
 				"nameRo": "Insulele Åland",
-				"population": "29.489",
 				"scalerank": 3,
 				"featurecla": "Admin-0 country",
 				"labelrank": 6,
@@ -6100,7 +6098,7 @@
 				"regionalGrouping": "EU Brexit",
 				"GDPtotal": 2618.8857,
 				"GDPpercap": 39899.39,
-				"nameRo": "Regatul Unit al Marii Britanii",
+				"nameRo": "Marea Britanie",
 				"population": 65.6372,
 				"scalerank": 1,
 				"featurecla": "Admin-0 country",
