@@ -134,7 +134,7 @@
 
 
     <div class="modal fade" id="areaModal" tabindex="-1" role="dialog" aria-labelledby="areaModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="areaModalLabel">Grafic Suprafață</h5>
@@ -143,7 +143,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    ...
+                    <canvas id="chartArea"></canvas>
                 </div>
             </div>
         </div>
@@ -322,70 +322,23 @@
             };
         }
 
+        function compare(a, b) {
+            if (a.population < b.population)
+                return -1;
+            if (a.population > b.population)
+                return 1;
+            return 0;
+        }
+
+        function compareArea(a, b) {
+            if (a.area < b.area)
+                return -1;
+            if (a.area > b.area)
+                return 1;
+            return 0;
+        }
 
         $.getJSON('/static/custom.geojson', function (data) {
-            var dataNameRo = [],
-                dataPopulation = [];
-            for (i = 0; i < data.features.length; i++) {
-                if (data.features[i].properties.population) {
-                    dataNameRo.push(data.features[i].properties.name);
-                };
-            };
-            for (i = 0; i < data.features.length; i++) {
-                if (data.features[i].properties.population) {
-                    dataPopulation.push(data.features[i].properties.population);
-                };
-            }
-            var ctx = document.getElementById("myChart");
-            var myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: dataNameRo,
-                    datasets: [{
-                        label: 'Population',
-                        data: dataPopulation,
-                        backgroundColor: [
-                            'rgba(128,0,38,0.7)',
-                            'rgba(254,178,76,0.7)',
-                            'rgba(128,0,38,0.7)',
-                            'rgba(227,26,28,0.7)',
-                            'rgba(254,217,118,0.7)',
-                            'rgba(254,217,118,0.7)',
-                            'rgba(189,0,38,0.7)',
-                            'rgba(254,217,118,0.7)',
-                            'rgba(227,26,28,0.7)',
-                            'rgba(128,0,38,0.7)',
-                            'rgba(128,0,38,0.7)',
-                            'rgba(254,178,76,0.7)',
-                            'rgba(254,217,118,0.7)',
-                            'rgba(227,26,28,0.7)',
-                            'rgba(189,0,38,0.7)',
-                            'rgba(253,141,60,0.7)',
-                            'rgba(253,141,60,0.7)',
-                            'rgba(255,237,160,0.7)',
-                            'rgba(255,237,160,0.7)',
-                            'rgba(255,237,160,0.7)',
-                            'rgba(253,141,60,0.7)',
-                            'rgba(254,178,76,0.7)',
-                            'rgba(253,141,60,0.7)',
-                            'rgba(189,0,38,0.7)',
-                            'rgba(254,178,76,0.7)',
-                            'rgba(227,26,28,0.7)',
-                            'rgba(255,237,160,0.7)',
-                            'rgba(189,0,38,0.7)'
-                        ]
-                    }]
-                },
-                options: {
-                    scales: {
-                        yAxes: [{
-                            ticks: {
-                                beginAtZero: true
-                            }
-                        }]
-                    }
-                }
-            });
             population = L.geoJson(data, {
                 style: stylePopulationLayer,
                 clickable: true,
@@ -439,6 +392,147 @@
             };
 
             L.control.layers(baseMaps).addTo(mymap);
+
+            // ### Chart ###
+            var dataInitial = [];
+            for (i = 0; i < data.features.length; i++) {
+                if (data.features[i].properties.population) {
+                    dataInitial.push({
+                        population: data.features[i].properties.population,
+                        name: data.features[i].properties.nameRo
+                    });
+                };
+            };
+            dataInitial.sort(compare);
+            dataInitial.reverse();
+
+            var dataNameRo = [],
+                dataPopulation = [];
+            for (i = 0; i < dataInitial.length; i++) {
+                dataNameRo.push(dataInitial[i].name);
+                dataPopulation.push(dataInitial[i].population);
+            };
+            console.log(dataNameRo);
+            var ctx = document.getElementById("myChart");
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: dataNameRo,
+                    datasets: [{
+                        label: 'Populația în milioane',
+                        data: dataPopulation,
+                        backgroundColor: [
+                            'rgba(128,0,38,0.8)',
+                            'rgba(128,0,38,0.7)',
+                            'rgba(128,0,38,0.7)',
+                            'rgba(128,0,38,0.7)',
+                            'rgba(189,0,38,0.7)',
+                            'rgba(189,0,38,0.7)',
+                            'rgba(189,0,38,0.7)',
+                            'rgba(189,0,38,0.7)',
+                            'rgba(227,26,28,0.7)',
+                            'rgba(227,26,28,0.7)',
+                            'rgba(227,26,28,0.7)',
+                            'rgba(227,26,28,0.7)',
+                            'rgba(253,141,60,0.7)',
+                            'rgba(253,141,60,0.7)',
+                            'rgba(253,141,60,0.7)',
+                            'rgba(253,141,60,0.7)',
+                            'rgba(254,178,76,0.7)',
+                            'rgba(254,178,76,0.7)',
+                            'rgba(254,178,76,0.7)',
+                            'rgba(254,178,76,0.7)',
+                            'rgba(254,217,118,0.7)',
+                            'rgba(254,217,118,0.7)',
+                            'rgba(254,217,118,0.7)',
+                            'rgba(254,217,118,0.7)',
+                            'rgba(255,237,160,1)',
+                            'rgba(255,237,160,1)',
+                            'rgba(255,237,160,1)',
+                            'rgba(255,237,160,1)'
+                        ]
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
+
+            var dataInitialArea = [];
+            for (i = 0; i < data.features.length; i++) {
+                if (data.features[i].properties.area) {
+                    dataInitialArea.push({
+                        area: data.features[i].properties.area,
+                        name: data.features[i].properties.nameRo
+                    });
+                };
+            };
+            dataInitialArea.sort(compareArea);
+            dataInitialArea.reverse();
+
+            var dataNameRo = [],
+                dataArea = [];
+            for (i = 0; i < dataInitialArea.length; i++) {
+                dataNameRo.push(dataInitialArea[i].name);
+                dataArea.push(dataInitialArea[i].area);
+            };
+
+            var ctx = document.getElementById("chartArea");
+            var myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: dataNameRo,
+                    datasets: [{
+                        label: 'Suprafața în km²',
+                        data: dataArea,
+                        backgroundColor: [
+                            'rgba(26,53,18,0.8)',
+                            'rgba(26,53,18,0.7)',
+                            'rgba(26,53,18,0.7)',
+                            'rgba(26,53,18,0.7)',
+                            'rgba(40,83,28,0.7)',
+                            'rgba(40,83,28,0.7)',
+                            'rgba(40,83,28,0.7)',
+                            'rgba(40,83,28,0.7)',
+                            'rgba(68,141,49,0.7)',
+                            'rgba(68,141,49,0.7)',
+                            'rgba(68,141,49,0.7)',
+                            'rgba(68,141,49,0.7)',
+                            'rgba(82,170,59,0.7)',
+                            'rgba(82,170,59,0.7)',
+                            'rgba(82,170,59,0.7)',
+                            'rgba(82,170,59,0.7)',
+                            'rgba(100,193,75,0.7)',
+                            'rgba(100,193,75,0.7)',
+                            'rgba(100,193,75,0.7)',
+                            'rgba(100,193,75,0.7)',
+                            'rgba(125,203,104,0.7)',
+                            'rgba(125,203,104,0.7)',
+                            'rgba(125,203,104,0.7)',
+                            'rgba(125,203,104,0.7)',
+                            'rgba(188,228,177,1)',
+                            'rgba(188,228,177,1)',
+                            'rgba(188,228,177,1)',
+                            'rgba(188,228,177,1)'
+                        ]
+                    }]
+                },
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    }
+                }
+            });
         })
 
         var currentModal = 'none';
