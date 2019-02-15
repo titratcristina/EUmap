@@ -149,6 +149,23 @@
         </div>
     </div>
 
+    <div class="modal fade" id="groupingModal" tabindex="-1" role="dialog" aria-labelledby="groupingModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="groupingModalLabel">Grafic Apartenență</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <canvas id="chartGrouping"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- JavaScript -->
     <!-- jQuery, Popper.js, Bootstrap JS, Chart.js -->
@@ -483,8 +500,8 @@
                 dataArea.push(dataInitialArea[i].area);
             };
 
-            var ctx = document.getElementById("chartArea");
-            var myChart = new Chart(ctx, {
+            var ctxArea = document.getElementById("chartArea");
+            var myChartArea = new Chart(ctxArea, {
                 type: 'bar',
                 data: {
                     labels: dataNameRo,
@@ -533,6 +550,29 @@
                     }
                 }
             });
+
+            var ctxGrouping = document.getElementById("chartGrouping");
+            var myPieChart = new Chart(ctxGrouping, {
+                type: 'doughnut',
+                data: {
+                    labels: [
+                        'Membri UE',
+                        'Candidați UE',
+                        'Brexit',
+                        'Membri EFTA'
+                    ],
+                    datasets: [{
+                        label: 'Suprafața în km²',
+                        data: [28, 5, 1, 2],
+                        backgroundColor: [
+                            '#004AA1',
+                            '#F7C59F',
+                            '#F76C5E',
+                            '#8FC93A',
+                        ]
+                    }]
+                }
+            });
         })
 
         var currentModal = 'none';
@@ -558,8 +598,8 @@
                 $(".legend").hide();
                 $("#legendSch").show();
             } else if (e.name == "Apartenența") {
-                currentModal = "none";
-                $('#mybutton').attr('disabled', 'disabled');
+                currentModal = "#groupingModal";
+                $('#mybutton').removeAttr('disabled');
                 $(".legend").hide();
                 $("#legendGr").show();
             }
@@ -568,7 +608,7 @@
         var info = L.control();
 
         info.onAdd = function (map) {
-            this._div = L.DomUtil.create('div', 'info'); // face un cu clasa "info"
+            this._div = L.DomUtil.create('div', 'info'); // face un div cu clasa "info"
             this.update();
             return this._div;
         };
