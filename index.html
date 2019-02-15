@@ -166,6 +166,23 @@
         </div>
     </div>
 
+    <div class="modal fade" id="schengenModal" tabindex="-1" role="dialog" aria-labelledby="schengenModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="schengenModalLabel">Grafic Țări Schengen</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <canvas id="chartSchengen"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
     <!-- JavaScript -->
     <!-- jQuery, Popper.js, Bootstrap JS, Chart.js -->
@@ -552,7 +569,7 @@
             });
 
             var ctxGrouping = document.getElementById("chartGrouping");
-            var myPieChart = new Chart(ctxGrouping, {
+            var groupingChart = new Chart(ctxGrouping, {
                 type: 'doughnut',
                 data: {
                     labels: [
@@ -562,13 +579,34 @@
                         'Membri EFTA'
                     ],
                     datasets: [{
-                        label: 'Suprafața în km²',
                         data: [28, 5, 1, 2],
                         backgroundColor: [
                             '#004AA1',
                             '#F7C59F',
                             '#F76C5E',
                             '#8FC93A',
+                        ]
+                    }]
+                }
+            });
+
+            var ctxSchengen = document.getElementById("chartSchengen");
+            var schengenChart = new Chart(ctxSchengen, {
+                type: 'doughnut',
+                data: {
+                    labels: [
+                        'Țări în Schengen',
+                        'Țări Non UE în Schengen',
+                        'Țări candidate Schengen',
+                        'Țări UE care nu sunt în spațiul Schengen'
+                    ],
+                    datasets: [{
+                        data: [26, 4, 3, 2],
+                        backgroundColor: [
+                            '#144679',
+                            '#6DC7BE',
+                            '#F8B932',
+                            '#AB3428'
                         ]
                     }]
                 }
@@ -593,8 +631,8 @@
                 $(".legend").hide();
                 $("#legendArea").show();
             } else if (e.name == "Spațiul Schengen") {
-                currentModal = "none";
-                $('#mybutton').attr('disabled', 'disabled');
+                currentModal = "schengenModal";
+                $('#mybutton').removeAttr('disabled');
                 $(".legend").hide();
                 $("#legendSch").show();
             } else if (e.name == "Apartenența") {

@@ -5584,7 +5584,7 @@
 				"languages": "croată",
 				"EUmemberSince": "2013",
 				"currency": "kuna croată",
-				"Schengen": "no",
+				"Schengen": "progress",
 				"regionalGrouping": "EU",
 				"GDPtotal": 50.4253,
 				"GDPpercap": 12090.67,
@@ -9215,6 +9215,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"Schengen": "yesNonEU",
 				"regionalGrouping": "EFTA",
 				"nameRo": "Islanda",
 				"scalerank": 1,
@@ -9745,6 +9746,7 @@
 		}, {
 			"type": "Feature",
 			"properties": {
+				"Schengen": "yesNonEU",
 				"regionalGrouping": "EFTA",
 				"nameRo": "Liechtenstein",
 				"scalerank": 1,
