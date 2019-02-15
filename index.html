@@ -613,7 +613,7 @@
             });
         })
 
-        var currentModal = 'none';
+        var currentModal = '#groupingModal';
 
         function openmodal() {
             $(currentModal).modal('show');
@@ -622,22 +622,18 @@
         mymap.on('baselayerchange', function (e) {
             if (e.name == "Populația") {
                 currentModal = "#populationModal";
-                $('#mybutton').removeAttr('disabled');
                 $(".legend").hide();
                 $("#legendPop").show();
             } else if (e.name == "Suprafața țărilor") {
                 currentModal = "#areaModal";
-                $('#mybutton').removeAttr('disabled');
                 $(".legend").hide();
                 $("#legendArea").show();
             } else if (e.name == "Spațiul Schengen") {
-                currentModal = "schengenModal";
-                $('#mybutton').removeAttr('disabled');
+                currentModal = "#schengenModal";
                 $(".legend").hide();
                 $("#legendSch").show();
             } else if (e.name == "Apartenența") {
                 currentModal = "#groupingModal";
-                $('#mybutton').removeAttr('disabled');
                 $(".legend").hide();
                 $("#legendGr").show();
             }
@@ -656,8 +652,8 @@
                 '<b>' + props.nameRo + ' (' + props.name + ')</b><br />' + props.population +
                 ' milioane locuitori' + '<br>' + 'Grupul regional ' + props.regionalGrouping +
                 '<br>' + 'Anul aderării:  ' + props.EUmemberSince + '<br>' + 'Suprafața:  ' + props.area :
-                'Alege o țară sau <button class="btn btn-xs btn-primary" id="mybutton" onclick="openmodal();"' +
-                (currentModal == 'none' ? " disabled='disabled' " : "") + '>vezi graficul</button>');
+                'Alege o țară sau <button class="btn btn-xs btn-primary" id="mybutton" onclick="openmodal();">vezi graficul</button>'
+            );
         };
 
         info.addTo(mymap);
