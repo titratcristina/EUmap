@@ -1,0 +1,303 @@
+/* defaults */
+
+html {
+    position: relative;
+    min-height: 100%;
+}
+
+body {
+    margin-bottom: 60px;
+}
+
+nav {
+    font-size: 1.4rem;
+}
+
+h3 {
+    margin-bottom: 2.5rem;
+}
+
+#logoPresidency {
+    width: 140px;
+    height: 50px;
+}
+
+/* fundal */
+
+.bg-init {
+    background-image: url("https://www.activenews.ro/images/articole/148835.jpg");
+    background-size: cover;
+    border-radius: 0;
+    padding-top: 100px;
+    padding-bottom: 120px;
+}
+
+.bg-transp {
+    color: white;
+    padding: 80px 0;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.bg-history {
+    background-image: url('/lib/img/romania.jpg');
+    background-size: cover;
+}
+
+/* centrare sau spatiere */
+
+.center {
+    text-align: center;
+}
+
+.btn-center {
+    margin: auto;
+}
+
+.space {
+    padding-top: 4rem;
+}
+
+.space-bottom {
+    margin-bottom: 7rem;
+}
+
+.padd {
+    padding: 1rem;
+}
+
+.btn-outline-danger {
+    margin-top: 3px;
+}
+
+/* card + scrolling effect */
+
+.scrolling-wrapper {
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.scrolling-wrapper .card {
+    display: inline-block;
+}
+
+.scrolling-wrapper {
+    max-height: 700px;
+    width: 100%;
+}
+
+.scrolling-wrapper::-webkit-scrollbar {
+    display: none;
+}
+
+.card {
+    min-width: 250px;
+    max-height: 700px;
+}
+
+
+.card-deck {
+    flex-flow: nowrap;
+    flex-direction: initial;
+    flex-wrap: nowrap;
+}
+
+.card-modal {
+    border: 0;
+    min-width: 160px !important;
+    width: 199px;
+    padding: 10px 0;
+    text-align: center;
+}
+
+/* imagini responsive din atractii*/
+
+#img-responsive {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    -webkit-transition: all .3s ease;
+    /* Safari and Chrome */
+    -moz-transition: all .3s ease;
+    /* Firefox */
+    -o-transition: all .3s ease;
+    /* IE 9 */
+    -ms-transition: all .3s ease;
+    /* Opera */
+    transition: all .3s ease;
+    z-index: -1000 !important;
+
+}
+
+#img-responsive:hover {
+    z-index: 1000 !important;
+    border-radius: 0%;
+    -webkit-transform: scale(3, 2);
+    /* Safari and Chrome */
+    -moz-transform: scale(3, 2);
+    /* Firefox */
+    -ms-transform: scale(3, 2);
+    /* IE 9 */
+    -o-transform: scale(3, 2);
+    /* Opera */
+    transform: scale(3, 2);
+}
+
+/* style modificat */
+
+.trio {
+    background-image: linear-gradient(to bottom right, #CE1126, #FCD116, #002B7F, #002B7F, #FCD116, #CE1126, #CE1126, #CE1126, #CE1126);
+    background-size: auto 200%;
+    background-position: 0 100%;
+    transition: background-position 0.5s;
+    border: 0;
+    margin: 0;
+    color: #fff;
+}
+
+.trio:hover,
+.trio:focus,
+.trio a:hover {
+    background-position: 0 0;
+    color: white;
+}
+
+.box-shadow {
+    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+.text-right {
+    float: right;
+}
+
+.lead {
+    font-size: 1.5rem;
+    line-height: 2.5rem;
+}
+
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+}
+
+/* responsive */
+
+@media (max-width: 991px) {
+    .display-2 {
+        font-size: 3.5rem !important;
+    }
+
+    .display-4 {
+        font-size: 1.5rem;
+    }
+
+    .hide {
+        display: none !important;
+    }
+
+    .smally {
+        font-size: 1rem !important;
+        line-height: 1.1rem !important;
+        font-weight: 100 !important;
+    }
+
+    .card-orase {
+        min-width: 330px !important;
+    }
+}
+
+/* Rating */
+
+.rating {
+    color: #a9a9a9;
+    margin: 0;
+    padding: 0;
+}
+
+ul.rating {
+    display: inline-block;
+}
+
+.rating li {
+    list-style-type: none;
+    display: inline-block;
+    padding: 1px;
+    text-align: center;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.rating .filled {
+    color: orangered;
+}
+
+.clear {
+    margin-top: 20px;
+}
+
+/* săgeata pentru indicarea scrollului pe orizontală*/
+
+i {
+    color: #0000004a;
+    display: flex;
+    justify-content: center;
+}
+
+/* animaţia sageaţii */
+
+.arrow {
+    animation: slide 1s ease-in-out infinite;
+}
+
+@keyframes slide {
+
+    0%,
+    100% {
+        transform: translate(0, 0);
+    }
+
+    50% {
+        transform: translate(10px, 0);
+    }
+}
+
+/* Like Box */
+
+.arrow_box {
+    position: relative;
+    background: #fff;
+    color: #dc3545;
+    border: 1px solid #dc3545;
+    padding: 1px 10px;
+    border-radius: 5px;
+    margin-left: 5px;
+}
+
+.arrow_box:after,
+.arrow_box:before {
+    right: 100%;
+    top: 50%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.arrow_box:after {
+    border-color: rgba(255, 255, 255, 0);
+    border-right-color: #fff;
+    border-width: 5px;
+    margin-top: -5px;
+}
+
+.arrow_box:before {
+    border-color: rgba(220, 53, 69, 0);
+    border-right-color: #dc3545;
+    border-width: 6px;
+    margin-top: -6px;
+}

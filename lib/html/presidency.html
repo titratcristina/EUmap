@@ -1,0 +1,27 @@
+<div class="space page-section" id='2'>
+    <h4 class="display-4 text-center" style="margin-bottom: 40px;">
+        Președinția Consiliului UE <i class="fas fa-angle-double-right arrow" aria-hidden="true"></i>
+    </h4>
+
+    <div class="container">
+        <div class="card-deck scrolling-wrapper">
+            <div class="card box-shadow card-orase" style="width: 17.7rem;" ng-repeat="country in data.presidency">
+                <img class="card-img-top" ng-src="{{ country.img }}">
+                <div class="card-body">
+                    <h5 class="card-title center">{{ country.name }}</h5>
+                    <h6 class="card-title center">{{ country.date }}</h6>
+                    <a ng-href="{{country.link}}" target="_blank">Site-ul președinției</a>
+                    <p class="card-text">{{ country.motto }}</p>
+                    <button type="button" ng-click="open($index)" class="btn btn-outline-primary btn-block">
+                        Mai mult
+                    </button>
+                    <button type="button" class="btn btn-outline-danger btn-block" ng-class="{'active': isActive[$index] }" ng-click="activeButton($index)" type="button">
+                        <span>&#x2764;</span> Apreciază<span class="arrow_box">{{ country.likes }}</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <i class="fas fa-angle-double-right arrow" aria-hidden="true"></i>
+        <modal></modal>
+    </div>
+</div>

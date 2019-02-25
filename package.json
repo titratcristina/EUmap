@@ -1,5 +1,5 @@
 {
-  "name": "map",
+  "name": "romania100",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -9,7 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "chart.js": "^2.7.3",
-    "express": "^4.16.4"
+    "body-parser": "^1.18.3",
+    "express": "^4.16.2",
+    "mongoose": "^5.2.3",
+    "socket.io": "^2.1.1"
   }
 }
