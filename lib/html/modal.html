@@ -5,8 +5,10 @@
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab" role="tablist">
                         <!-- opţiunile meniului din modal -->
-                        <a class="nav-item nav-link show active" id="nav-detalii-tab" data-toggle="tab" href="#nav-detalii" role="tab" aria-controls="nav-detalii" aria-selected="true">Misiunile Președinției</a>
-                        <a class="nav-item nav-link" id="nav-review-tab" data-toggle="tab" href="#nav-review" role="tab" aria-controls="nav-review" aria-selected="false">Review</a>
+                        <a class="nav-item nav-link show active" id="nav-detalii-tab" data-toggle="tab" href="#nav-detalii"
+                            role="tab" aria-controls="nav-detalii" aria-selected="true">Misiunile Președinției</a>
+                        <a class="nav-item nav-link" id="nav-review-tab" data-toggle="tab" href="#nav-review" role="tab"
+                            aria-controls="nav-review" aria-selected="false">Păreri</a>
                         <!-- butonul de inchidere al modalului -->
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
@@ -39,7 +41,8 @@
                                     </div>
                                     <div class="col-md-6">
                                         <div ng-repeat="rating in ratings">
-                                            <div star-rating rating-value="rating.current" max="rating.max" on-rating-selected="getSelectedRating(rating)"></div>
+                                            <div star-rating rating-value="rating.current" max="rating.max"
+                                                on-rating-selected="getSelectedRating(rating)"></div>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
@@ -60,7 +63,8 @@
                                     <div class="col-md-12 " ng-repeat="review in data.presidency[selected].reviews">
                                         <div class="card mb-3 w-100">
                                             <div class="card-header">
-                                                <strong>{{review.name}} <span ng-repeat="i in getNumber(review.rating) track by $index">★</span> </strong> <span class="text-muted"> {{review.time | date : 'short' }}</span>
+                                                <strong>{{review.name}} <span ng-repeat="i in getNumber(review.rating) track by $index">★</span>
+                                                </strong> <span class="text-muted"> {{review.time | date : 'short' }}</span>
                                             </div>
                                             <div class="card-body ">
                                                 <p class="card-text ">{{review.content}}</p>
@@ -78,7 +82,8 @@
 </div>
 
 <!-- Quiz Modal -->
-<div class="modal fade" id="quizModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="quizModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered  modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-header">
