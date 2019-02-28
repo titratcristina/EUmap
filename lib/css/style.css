@@ -301,3 +301,9 @@ i {
     border-width: 6px;
     margin-top: -6px;
 }
+
+@media only screen and (max-width: 576px) {
+    .footer {
+        line-height: 30px;
+    }
+}

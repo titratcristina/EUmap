@@ -5,10 +5,12 @@
     <!-- Meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://static.flash-its.eu/assets/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="https://static.flash-its.eu/assets/css/font-awesome.min.css" />
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.css" integrity="sha256-YR4HrDE479EpYZgeTkQfgVJq08+277UXxMLbi/YP69o=" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.css" integrity="sha256-YR4HrDE479EpYZgeTkQfgVJq08+277UXxMLbi/YP69o="
+        crossorigin="anonymous" />
     <title>Uniunea Europeană</title>
     <style>
         body {
@@ -66,6 +68,16 @@
           line-height  : .5;
           border-radius : .2rem;
         }
+
+        /*  RESPONSIVE */
+        @media only screen and (max-width: 576px) {
+            .legend{
+                display: none!important;
+            }
+            .leaflet-control {
+                margin-left: 10px;
+            }
+        }
     </style>
 </head>
 
@@ -112,7 +124,8 @@
 
 
 
-    <div class="modal fade" style="z-index: 99999;" id="populationModal" tabindex="-1" role="dialog" aria-labelledby="populationModalLabel" aria-hidden="true">
+    <div class="modal fade" style="z-index: 99999;" id="populationModal" tabindex="-1" role="dialog" aria-labelledby="populationModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -130,7 +143,8 @@
 
 
 
-    <div class="modal fade" style="z-index: 99999;" id="areaModal" tabindex="-1" role="dialog" aria-labelledby="areaModalLabel" aria-hidden="true">
+    <div class="modal fade" style="z-index: 99999;" id="areaModal" tabindex="-1" role="dialog" aria-labelledby="areaModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -146,7 +160,8 @@
         </div>
     </div>
 
-    <div class="modal fade" style="z-index: 99999;" id="groupingModal" tabindex="-1" role="dialog" aria-labelledby="groupingModalLabel" aria-hidden="true">
+    <div class="modal fade" style="z-index: 99999;" id="groupingModal" tabindex="-1" role="dialog" aria-labelledby="groupingModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -162,7 +177,8 @@
         </div>
     </div>
 
-    <div class="modal fade" style="z-index: 99999;" id="schengenModal" tabindex="-1" role="dialog" aria-labelledby="schengenModalLabel" aria-hidden="true">
+    <div class="modal fade" style="z-index: 99999;" id="schengenModal" tabindex="-1" role="dialog" aria-labelledby="schengenModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -182,23 +198,26 @@
     <!-- JavaScript -->
     <!-- jQuery, Popper.js, Bootstrap JS, Chart.js -->
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.js" integrity="sha256-6BZRSENq3kxI4YYBDqJ23xg0r1GwTHEpvp3okdaIqBw=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.4.0/leaflet.js" integrity="sha256-6BZRSENq3kxI4YYBDqJ23xg0r1GwTHEpvp3okdaIqBw="
+        crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
     <script src="/lib/js/Control.FullScreen.js"></script>
 
     <script>
-    	$(window).on('load', function(){
-		  $('.modal').appendTo('#mapid');
-          $('.legend').appendTo('#mapid');
-		})
-        var mymap = L.map('mapid',
-        	{ scrollWheelZoom: false,
-              fullscreenControl: {
-			    pseudoFullscreen: false
-			  }
-			}).setView([56.1528, 7.8940], 4);
+        $(window).on('load', function () {
+            $('.modal').appendTo('#mapid');
+            $('.legend').appendTo('#mapid');
+        })
+        var mymap = L.map('mapid', {
+            scrollWheelZoom: false,
+            fullscreenControl: {
+                pseudoFullscreen: false
+            }
+        }).setView([56.1528, 7.8940], 4);
         var population, groupings, schengen;
         L.tileLayer(
             'https://cartodb-basemaps-a.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
@@ -374,11 +393,11 @@
             return 0;
         }
 
-        $.getJSON('/lib/custom.geojson', function(data) {
+        $.getJSON('/lib/custom.geojson', function (data) {
             population = L.geoJson(data, {
                 style: stylePopulationLayer,
                 clickable: true,
-                onEachFeature: function(feature, layer) {
+                onEachFeature: function (feature, layer) {
                     layer.on({
                         mouseover: highlightFeature,
                         mouseout: resetHighlightPopulation,
@@ -389,7 +408,7 @@
             area = L.geoJson(data, {
                 style: styleArea,
                 clickable: true,
-                onEachFeature: function(feature, layer) {
+                onEachFeature: function (feature, layer) {
                     layer.on({
                         mouseover: highlightFeature,
                         mouseout: resetHighlightArea,
@@ -400,7 +419,7 @@
             groupings = L.geoJson(data, {
                 style: styleGroupings,
                 clickable: true,
-                onEachFeature: function(feature, layer) {
+                onEachFeature: function (feature, layer) {
                     layer.on({
                         mouseover: highlightFeature,
                         mouseout: resetHighlightGrouping,
@@ -411,7 +430,7 @@
             schengen = L.geoJson(data, {
                 style: styleSchengen,
                 clickable: true,
-                onEachFeature: function(feature, layer) {
+                onEachFeature: function (feature, layer) {
                     layer.on({
                         mouseover: highlightFeature,
                         mouseout: resetHighlightSchengen,
@@ -622,77 +641,77 @@
             $(currentModal).modal('show');
         }
 
-        mymap.on('baselayerchange', function(e) {
-        	switch(e.name) {
-			  case "Populația":
-			    $('#legendheader').text('Populația țărilor din UE');
-			    currentModal = "#populationModal";
-                $(".legend").hide();
-                $("#legendPop").show();
-			    break;
-			  case "Suprafața țărilor":
-			    $('#legendheader').text('Suprafața țărilor din UE');
-			    currentModal = "#areaModal";
-                $(".legend").hide();
-                $("#legendArea").show();
-			    break;
-			  case "Spațiul Schengen":
-			    $('#legendheader').text('Aderarea la Spațiul Schengen');
-			    currentModal = "#schengenModal";
-                $(".legend").hide();
-                $("#legendSch").show();
-			    break;
-			  case "Apartenența":
-			    $('#legendheader').text('Apartenența în grupuri europene');
-			    currentModal = "#groupingModal";
-                $(".legend").hide();
-                $("#legendGr").show();
-			    break;
-			}
+        mymap.on('baselayerchange', function (e) {
+            switch (e.name) {
+                case "Populația":
+                    $('#legendheader').text('Populația țărilor din UE');
+                    currentModal = "#populationModal";
+                    $(".legend").hide();
+                    $("#legendPop").show();
+                    break;
+                case "Suprafața țărilor":
+                    $('#legendheader').text('Suprafața țărilor din UE');
+                    currentModal = "#areaModal";
+                    $(".legend").hide();
+                    $("#legendArea").show();
+                    break;
+                case "Spațiul Schengen":
+                    $('#legendheader').text('Aderarea la Spațiul Schengen');
+                    currentModal = "#schengenModal";
+                    $(".legend").hide();
+                    $("#legendSch").show();
+                    break;
+                case "Apartenența":
+                    $('#legendheader').text('Apartenența în grupuri europene');
+                    currentModal = "#groupingModal";
+                    $(".legend").hide();
+                    $("#legendGr").show();
+                    break;
+            }
         });
 
         var info = L.control();
 
-        info.onAdd = function(map) {
+        info.onAdd = function (map) {
             this._div = L.DomUtil.create('div', 'info'); // face un div cu clasa "info"
             this.update();
             return this._div;
         };
 
-        info.update = function(props) {
-        	switch(currentModal) {
-			  case "#populationModal":
-				this._div.innerHTML = '<h4 id="legendheader">Populația țărilor din UE</h4>' + (props ?
-	                '<b>' + props.nameRo + ' (' + props.name + ')</b><br />' + ((props.population)?props.population+
-	                ' milioane locuitori':"")  + '<br>' :
-	                'Alege o țară sau <button class="btn btn-xs btn-primary" id="mybutton" onclick="openmodal();">vezi graficul</button>'
-	            	);
-			    break;
-			  case "#areaModal":
-			  	this._div.innerHTML = '<h4 id="legendheader">Suprafața țărilor din UE</h4>' + (props ?
-	                '<b>' + props.nameRo + ' (' + props.name + ')</b><br />' + ((props.area)?'Suprafața: '+props.area+' km²':"") :
-	                'Alege o țară sau <button class="btn btn-xs btn-primary" id="mybutton" onclick="openmodal();">vezi graficul</button>'
-	            	);
-			    break;
-			  case "#schengenModal":
-			  	this._div.innerHTML = '<h4 id="legendheader">Aderarea la Spațiul Schengen</h4>' + (props ?
-	                '<b>' + props.nameRo + ' (' + props.name + ')</b>' :
-	                'Alege o țară sau <button class="btn btn-xs btn-primary" id="mybutton" onclick="openmodal();">vezi graficul</button>'
-	            	);
-			    break;
-			  case "#groupingModal":
-			  	this._div.innerHTML = '<h4 id="legendheader">Apartenența în grupuri europene</h4>' + (props ?
-	                '<b>' + props.nameRo + ' (' + props.name + ')</b><br />Grupul regional: ' + props.regionalGrouping +
-	                '<br>' + (props.EUmemberSince?('Anul aderării:  ' + props.EUmemberSince):"") :
-	                'Alege o țară sau <button class="btn btn-xs btn-primary" id="mybutton" onclick="openmodal();">vezi graficul</button>'
-	            	);
-			    break;
-			}
-            
+        info.update = function (props) {
+            switch (currentModal) {
+                case "#populationModal":
+                    this._div.innerHTML = '<h4 id="legendheader">Populația țărilor din UE</h4>' + (props ?
+                        '<b>' + props.nameRo + ' (' + props.name + ')</b><br />' + ((props.population) ? props.population +
+                            ' milioane locuitori' : "") + '<br>' :
+                        'Alege o țară sau <button class="btn btn-xs btn-primary" id="mybutton" onclick="openmodal();">vezi graficul</button>'
+                    );
+                    break;
+                case "#areaModal":
+                    this._div.innerHTML = '<h4 id="legendheader">Suprafața țărilor din UE</h4>' + (props ?
+                        '<b>' + props.nameRo + ' (' + props.name + ')</b><br />' + ((props.area) ?
+                            'Suprafața: ' + props.area + ' km²' : "") :
+                        'Alege o țară sau <button class="btn btn-xs btn-primary" id="mybutton" onclick="openmodal();">vezi graficul</button>'
+                    );
+                    break;
+                case "#schengenModal":
+                    this._div.innerHTML = '<h4 id="legendheader">Aderarea la Spațiul Schengen</h4>' + (props ?
+                        '<b>' + props.nameRo + ' (' + props.name + ')</b>' :
+                        'Alege o țară sau <button class="btn btn-xs btn-primary" id="mybutton" onclick="openmodal();">vezi graficul</button>'
+                    );
+                    break;
+                case "#groupingModal":
+                    this._div.innerHTML = '<h4 id="legendheader">Apartenența în grupuri europene</h4>' + (props ?
+                        '<b>' + props.nameRo + ' (' + props.name + ')</b><br />Grupul regional: ' + props.regionalGrouping +
+                        '<br>' + (props.EUmemberSince ? ('Anul aderării:  ' + props.EUmemberSince) : "") :
+                        'Alege o țară sau <button class="btn btn-xs btn-primary" id="mybutton" onclick="openmodal();">vezi graficul</button>'
+                    );
+                    break;
+            }
+
         };
 
         info.addTo(mymap);
-
     </script>
 </body>
 
